@@ -616,6 +616,12 @@ class While(Loop):
 
 class For(Loop):
     def __init__(self, start, condition, update, body):
+        #Incoming arguments can be strings with; ending
+        #Or Generables which generate ; endings
+        start = str(start).rstrip(";")
+        condition = str(condition).rstrip(";")
+        update = str(update).rstrip(";")
+
         self.start = start
         self.condition = condition
         self.update = update
